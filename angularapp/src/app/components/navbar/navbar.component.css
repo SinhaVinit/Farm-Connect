@@ -1,0 +1,100 @@
+.navbar{
+    /* background: rgb(29, 0, 36); */
+    /* background: linear-gradient(45deg, #1B5E20, #33691E, #424242, #212121); */
+    /* overflow: hidden; */
+    /* justify-content: space-between;
+    display: flex;
+    align-items: center;
+    padding: 10px; */
+}
+.navbar{
+    /* background: rgb(29, 0, 36); */
+    background: linear-gradient(45deg, #1B5E20, #33691E, #424242, #212121);
+    /* overflow: hidden; */
+    /* justify-content: space-between;
+    display: flex;
+    align-items: center;
+    padding: 10px; */
+}
+/* .navbar p {
+    margin: 0;
+    color: white;
+    font-size: 20px;
+}
+#A{
+  display: flex;
+  align-items: center;
+}
+#A a, #A button{
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    margin: 0 10px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+#A button{
+    background-color: green;
+    border-radius: 5px;
+    padding: 10px 20px;
+    color: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+#A button:hover{
+    background-color: red;
+}
+.dropdown{
+    display: none;
+    position: absolute;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(45deg, #1B5E20, #33691E, #424242);
+    border-radius: 5px;
+}
+#A a{
+    position: relative;
+}
+#A a:hover + .dropdown{
+    z-index: 1;
+    display: block;
+    position: absolute;
+}
+.dropdown:hover{
+    z-index: 1;
+    display: block;
+    position: absolute;
+}
+.dropdown li {
+    width: 200px;
+}
+.dropdown li:hover {
+    background-color: #caf362;
+}
+.dropdown li a {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.firstdrop {
+    left: 45%;
+    top: 80%;
+}
+.seconddrop {
+    left: 80%;
+    top: 80%;
+}
+img {
+    height: 50px;
+    width: 55px;
+}
+h2 {
+    display: flex ;
+    position: relative;
+    left: 0%;
+} */

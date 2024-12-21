@@ -1,0 +1,9 @@
+.navbar{
+    background: linear-gradient(45deg, #1B5E20, #33691E, #424242, #212121);
+}
+.navbaroption {
+    background: linear-gradient(45deg, #1B5E20, #33691E, #424242);
+}
+.navbaroption a:hover {
+    background-color: #a1d322;
+}

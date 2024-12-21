@@ -1,0 +1,196 @@
+<!-- <div *ngIf="!requests">No Products Found!!</div>
+<div *ngIf="requests" class="container">
+    <h1>Your Requests</h1>
+    <table>
+        <thead>
+            <tr>
+                <td>S.No</td>
+                <td>Request Type</td>
+                <td>Medicine-Name/
+                    <br>
+                    Feed-Name
+                </td>
+                <td>Livestock</td>
+                <td>Quantity</td>
+                <td>Submission Date</td>
+                <td>Status</td>
+                <td>Actions</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let request of requests let i=index">
+                <td>{{i+1}}</td>
+                <td>{{request.requestType}}</td>
+                <td *ngIf="request.requestType === 'Medicine'">
+                    <div *ngIf="request.medicine != null">
+                        {{request.medicine.medicineName}}
+                    </div>
+                    <div *ngIf="request.medicine == null">
+                        Item Deleted
+                    </div>
+                </td>
+                <td *ngIf="request.requestType === 'Feed'">
+                    <div *ngIf="request.feed != null">
+                        {{request.feed.feedName}}
+                    </div>
+                    <div *ngIf="request.feed == null">
+                        Item Deleted
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="request.livestock != null">
+                        {{request.livestock.name}}
+                    </div>
+                    <div *ngIf="request.livestock == null">
+                        Item Deleted
+                    </div>
+                </td>
+                <td>{{request.quantity}}</td>
+                <td>{{request.date}}</td>
+                <td>{{request.status}}</td>
+                <td *ngIf="request.status ==='Approved' || request.status ==='Rejected'">
+                    <button style="background-color: grey;">Delete</button>
+                    <button style="background-color: grey;">Edit</button>
+                </td>
+                <td *ngIf="request.status==='pending'">
+                    <button style="background-color: red;" (click)="deleteRequest(request.requestId)">Delete</button>
+                    <button style="background-color: green;" (click)="editRequest(request)">Edit</button>
+                </td>
+                <div class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50" *ngIf="edit">
+                    <div class="bg-white rounded-lg shadow-lg p-6 w-1/3">
+                        <h2 class="text-xl font-semibold mb-4">Update your Request</h2>
+                        <div>
+                            <label>Request Type: </label>
+                            <input type="text" [(ngModel)]=" editRequestType" required disabled />
+                        </div>
+                        <div>
+                            <label>Quantity</label>
+                            <input type="number" [(ngModel)]="editQuantity" required />
+                        </div>
+
+                        <div>
+                            <button class="bg-blue-500 text-white px-4 py-2 rounded"
+                                (click)="Save(request)">Save</button>
+                        </div>
+                        <div>
+                            <button class="bg-blue-500 text-white px-4 py-2 rounded" (click)="close()">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </tr>
+        </tbody>
+    </table>
+</div> -->
+<!-- <div class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50" *ngIf="edit">
+    <div class="bg-white rounded-lg shadow-lg p-6 w-1/3">
+        <h2 class="text-xl font-semibold mb-4">Update your Request</h2>
+        <div>
+            <label>Request Type: </label>
+            <input type="text" [(ngModel)]=" editRequestType" required disabled />
+        </div>
+        <div>
+            <label>Quantity</label>
+            <input type="number" [(ngModel)]="editQuantity" required />
+        </div>
+
+        <div>
+            <button class="bg-blue-500 text-white px-4 py-2 rounded"
+                (click)="Save(request)">Save</button>
+        </div>
+        <div>
+            <button class="bg-blue-500 text-white px-4 py-2 rounded" (click)="close()">Close</button>
+        </div>
+    </div>
+</div> -->
+
+
+
+<div class="container mx-auto p-4">
+    <h1 class="text-2xl font-bold mb-4 text-center text-white">YOUR REQUESTS</h1>
+    <table class="min-w-full bg-white text-center">
+        <thead>
+            <tr class="bg-gradient-to-r from-green-900 via-green-800 to-gray-800 text-white">
+                <th class="py-2 px-1 border-b">S.No</th>
+                <th class="py-2 px-1 border-b">Request Type</th>
+                <th class="py-2 px-1 border-b">Medicine-Name/<br>Feed-Name</th>
+                <th class="py-2 px-1 border-b">Livestock</th>
+                <th class="py-2 px-1 border-b">Quantity</th>
+                <th class="py-2 px-1 border-b">Submission Date</th>
+                <th class="py-2 px-1 border-b">Status</th>
+                <th class="py-2 px-1 border-b">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let request of requests let i=index"  class="hover:bg-gray-100">
+                <td class="py-2 px-1 border-b">{{i+1}}</td>
+                <td class="py-2 px-1 border-b">{{request.requestType}}</td>
+                <td class="py-2 px-1 border-b" *ngIf="request.requestType === 'Medicine'">
+                    <div *ngIf="request.medicine != null">
+                        {{request.medicine.medicineName}}
+                    </div>
+                    <div *ngIf="request.medicine == null">
+                        Item Deleted
+                    </div>
+                </td>
+                <td class="py-2 px-1 border-b" *ngIf="request.requestType === 'Feed'">
+                    <div *ngIf="request.feed != null">
+                        {{request.feed.feedName}}
+                    </div>
+                    <div *ngIf="request.feed == null">
+                        Item Deleted
+                    </div>
+                </td>
+                <td class="py-2 px-1 border-b">
+                    <div *ngIf="request.livestock != null">
+                        {{request.livestock.name}}
+                    </div>
+                    <div *ngIf="request.livestock == null">
+                        Item Deleted
+                    </div>
+                </td>
+                <td class="py-2 px-1 border-b">{{request.quantity}}</td>
+                <td class="py-2 px-1 border-b">{{request.date}}</td>
+                <td class="py-2 px-1 border-b">{{request.status}}</td>
+                <td class="py-2 px-1 border-b" *ngIf="request.status ==='Approved' || request.status ==='Rejected'">
+                    <button class="bg-gray-500 text-white px-2 py-1 rounded mr-2">Delete</button>
+                    <button class="bg-gray-500 text-white px-2 py-1 rounded mr-2">Edit</button>
+                </td>
+                <td class="py-2 px-1 border-b" *ngIf="request.status==='pending'">
+                    <button class="bg-red-500 text-white px-2 py-1 rounded mr-2 hover:bg-red-700" (click)="deleteRequest(request.requestId)">Delete</button>
+                    <button class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-700" (click)="editRequest(request)">Edit</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50" *ngIf="edit">
+    <div class="bg-white rounded-lg shadow-lg p-6 w-1/3">
+        <section class="text-gray-600 body-font mx-auto flex item-center">
+            <div class="px-5 py-5 mx-auto flex">
+                <div class="bg-gray-100 rounded p-8 flex flex-col mt-10 color-bg">
+                    <form>
+                        <h2 class=" text-gray-900 text-lg font-medium title-font mb-5">Update Request</h2>
+        
+                        <div class="relative mb-4">
+                            <label class="leading-7 text-sm text-gray-600">Request Type<span style="color: red;">*</span></label>
+                            <input type="text" name="editRequestType" [(ngModel)]="editRequestType" required disabled 
+                                class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        </div>
+        
+                        <div class="relative mb-4">
+                            <label class="leading-7 text-sm text-gray-600">Quantity<span style="color: red;">*</span></label>
+                            <input type="number" name="editQuantity" [(ngModel)]="editQuantity" required
+                                class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        </div>
+                        
+                        <button type="button" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700"
+                            (click)="save()">Save</button>
+                        <button type="button" class="ml-2 bg-gray-500 text-white px-4 py-2 rounded mr-2 hover:bg-gray-700"
+                            (click)="close()">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

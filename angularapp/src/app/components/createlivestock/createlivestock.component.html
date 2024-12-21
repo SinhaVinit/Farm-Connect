@@ -1,0 +1,208 @@
+<!-- <div class="container">
+    <form [formGroup]="createLivestockForm" (ngSubmit)="addLivestock()">
+        <table>
+            <thead>
+                <h1>Create New Livestock</h1>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><label>Name<span>*</span></label></td>
+                </tr>
+                <tr>
+                    <td><input type="text" formControlName="name" name="name" /></td>
+                </tr>
+                <tr><span
+                        *ngIf="createLivestockForm.get('name') && createLivestockForm.get('name')?.invalid && createLivestockForm.get('name')?.touched">Name
+                        field is required!!</span></tr>
+
+                <tr>
+                    <td><label>Species<span>*</span></label></td>
+                </tr>
+                <tr>
+                    <td><input type="text" formControlName="species" name="species" /></td>
+                </tr>
+                <tr><span
+                        *ngIf="createLivestockForm.get('species') && createLivestockForm.get('species')?.invalid && createLivestockForm.get('species')?.touched">Species
+                        field is required!!</span></tr>
+
+
+                <tr>
+                    <td><label>Age<span>*</span></label></td><br>
+                </tr>
+                <tr>
+                    <td><input type="number" formControlName="age" name="age" /></td>
+                </tr>
+                <tr>
+                    <div *ngIf="createLivestockForm.get('age').invalid && createLivestockForm.get('age').touched">
+                        <span *ngIf="createLivestockForm.get('age').errors.required">Age field is required!!</span>
+                        <span *ngIf="createLivestockForm.get('age').errors.min">Number should not be negative or
+                            zero</span>
+                    </div>
+                </tr>
+
+
+                <tr>
+                    <td><label>Breed<span>*</span></label></td>
+                </tr>
+                <tr>
+                    <td><input type="text" formControlName="breed" name="breed" /></td>
+                </tr>
+                <tr><span
+                        *ngIf="createLivestockForm.get('breed') && createLivestockForm.get('breed')?.invalid && createLivestockForm.get('breed')?.touched">Breed
+                        field is required!!</span></tr>
+
+
+                <tr>
+                    <td><label>Health Condition<span>*</span></label></td>
+                </tr>
+                <tr>
+                    <td><input type="text" formControlName="healthCondition" name="healthCondition" /></td>
+                </tr>
+                <tr><span
+                        *ngIf="createLivestockForm.get('healthCondition') && createLivestockForm.get('healthCondition')?.invalid && createLivestockForm.get('healthCondition')?.touched">Health
+                        Condition
+                        field is required!!</span></tr>
+
+
+                <tr>
+                    <td><label>Location<span>*</span></label></td>
+                </tr>
+                <tr>
+                    <td><input type="text" formControlName="location" name="location" /></td>
+                </tr>
+                <tr><span
+                        *ngIf="createLivestockForm.get('location') && createLivestockForm.get('location')?.invalid && createLivestockForm.get('location')?.touched">Location
+                        field is required!!</span></tr>
+
+
+                <tr>
+                    <td><label>Vaccination Status<span>*</span></label></td>
+                </tr>
+                <tr>
+                    <td><input type="text" formControlName="vaccinationStatus" name="vaccinationStatus" /></td>
+                </tr>
+                <tr><span
+                        *ngIf="createLivestockForm.get('vaccinationStatus') && createLivestockForm.get('vaccinationStatus')?.invalid && createLivestockForm.get('vaccinationStatus')?.touched">Vaccination
+                        Status
+                        field is required!!</span></tr>
+                <tr><span *ngIf="formSubmitted && createLivestockForm.invalid">All fields are Required!!, Brother</span>
+                </tr>
+                <tr><span *ngIf="newMessage === 'This Livestock already exists!!'"> The Livestock with Name,Breed &
+                        Species Already Exists!!</span></tr>
+                <tr><button type="submit">Submit</button></tr>
+            </tbody>
+
+        </table>
+    </form>
+
+</div> -->
+
+
+
+
+
+
+<section class="text-gray-600 body-font mx-auto flex item-center">
+    <div class="px-5 py-5 mx-auto flex">
+        <div class="bg-gray-100 rounded p-8 flex flex-col mt-10 color-bg">
+            <form class="form-group" [formGroup]="createLivestockForm" (ngSubmit)="addLivestock()">
+                <h2 class=" text-gray-900 text-lg font-medium title-font mb-5">Create New Livestock</h2>
+
+                <div class="relative mb-4">
+                    <label class="leading-7 text-sm text-gray-600">Livestock Name<span
+                            style="color: red;">*</span></label>
+                    <input type="text" formControlName="name" placeholder="Livestock Name"
+                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    <span class="redContent"
+                        *ngIf="createLivestockForm.get('name') && createLivestockForm.get('name').invalid && createLivestockForm.get('name').touched">Name
+                        field is required!!
+                    </span>
+                </div>
+
+                <div class="relative mb-4">
+                    <label class="leading-7 text-sm text-gray-600">Species<span style="color: red;">*</span></label>
+                    <input type="text" formControlName="species" placeholder="Species"
+                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    <span class="redContent"
+                        *ngIf="createLivestockForm.get('species') && createLivestockForm.get('species')?.invalid && createLivestockForm.get('species')?.touched">Species
+                        field is required!!
+                    </span>
+                </div>
+
+                <div class="relative mb-4">
+                    <label class="leading-7 text-sm text-gray-600">Age<span style="color: red;">*</span></label>
+                    <input type="number" formControlName="age" placeholder="Age"
+                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    <div *ngIf="createLivestockForm.get('age').invalid && createLivestockForm.get('age').touched">
+                        <span class="redContent" *ngIf="createLivestockForm.get('age').errors.required">Age field is required!!</span>
+                        <span class="redContent" *ngIf="createLivestockForm.get('age').errors.min">Number should not be negative or
+                            zero
+                        </span>
+                    </div>
+                </div>
+
+                <div class="relative mb-4">
+                    <label class="leading-7 text-sm text-gray-600">Breed<span style="color: red;">*</span></label>
+                    <input type="text" formControlName="breed" placeholder="Breed"
+                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    <span class="redContent"
+                        *ngIf="createLivestockForm.get('breed') && createLivestockForm.get('breed')?.invalid && createLivestockForm.get('breed')?.touched">Breed
+                        field is required!!
+                    </span>
+                </div>
+
+                <div class="relative mb-4">
+                    <label class="leading-7 text-sm text-gray-600">Health Condition<span
+                            style="color: red;">*</span></label>
+                    <input type="text" formControlName="healthCondition" placeholder="Health Condition"
+                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    <span class="redContent"
+                        *ngIf="createLivestockForm.get('healthCondition') && createLivestockForm.get('healthCondition')?.invalid && createLivestockForm.get('healthCondition')?.touched">Health
+                        Condition
+                        field is required!!
+                    </span>
+                </div>
+
+                <div class="relative mb-4">
+                    <label class="leading-7 text-sm text-gray-600">Location<span style="color: red;">*</span></label>
+                    <input type="text" formControlName="location" placeholder="Location"
+                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    <span class="redContent"
+                        *ngIf="createLivestockForm.get('location') && createLivestockForm.get('location')?.invalid && createLivestockForm.get('location')?.touched">Location
+                        field is required!!
+                    </span>
+                </div>
+
+                <div class="relative mb-4">
+                    <label class="leading-7 text-sm text-gray-600">Vaccination Status<span
+                            style="color: red;">*</span></label>
+                    <input type="text" formControlName="vaccinationStatus" placeholder="Vaccination Status"
+                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    <span class="redContent"
+                        *ngIf="createLivestockForm.get('vaccinationStatus') && createLivestockForm.get('vaccinationStatus')?.invalid && createLivestockForm.get('vaccinationStatus')?.touched">Vaccination
+                        Status
+                        field is required!!
+                    </span>
+                </div>
+
+                <div>
+                    <span *ngIf="formSubmitted && createLivestockForm.invalid" class="redContent">All fields are Required!!</span>
+                    <span *ngIf="newMessage === 'This Livestock already exists!!'" class="redContent"> The Livestock with Name,Breed &
+                        Species Already Exists!!</span>
+                </div>
+                <button
+                    class="button-color w-full text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+                    type="submit">
+                    Add Livestock
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<div class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50" *ngIf="msg">
+    <div class="bg-white rounded-lg shadow-lg p-6 w-1/3">
+        <h2 class="text-xl font-semibold mb-4">{{newMessage}}</h2>
+        <button class="bg-gray-500 hover:bg-gray-700 text-white px-4 py-2 rounded" (click)="closeModel()">Close</button>
+    </div>
+</div>

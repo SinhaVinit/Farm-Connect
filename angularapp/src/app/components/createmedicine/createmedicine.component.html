@@ -1,0 +1,224 @@
+<!-- <div class="container mt-5">
+  <div class="card mx-auto p-4 shadow" style="max-width: 450px;">
+    <form [formGroup]="medicineForm" (ngSubmit)="addMedicine(successModal,errorModal)">
+      <h2 class="text-center mb-4">Create New Medicine</h2>
+      <div class="form-group">
+        <label for="medicineName">Medicine Name<span class="redContent">*</span></label>
+        <input formControlName="medicineName" class="form-control">
+        <div class="redContent"
+          *ngIf="medicineForm.get('medicineName').invalid && medicineForm.get('medicineName').touched">
+          Medicine Name is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="brand">Brand<span class="redContent">*</span></label>
+        <input formControlName="brand" class="form-control">
+        <div class="redContent" *ngIf="medicineForm.get('brand').invalid && medicineForm.get('brand').touched">
+          Brand is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="category">Category<span class="redContent">*</span></label>
+        <input formControlName="category" class="form-control">
+        <div class="redContent" *ngIf="medicineForm.get('category').invalid && medicineForm.get('category').touched">
+          Category is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="description">Description<span class="redContent">*</span></label>
+        <input formControlName="description" class="form-control">
+        <div class="redContent"
+          *ngIf="medicineForm.get('description').invalid && medicineForm.get('description').touched">
+          Description is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="quantity">Quantity<span class="redContent">*</span></label>
+        <input type="number" formControlName="quantity" class="form-control">
+        <div class="redContent" *ngIf="medicineForm.get('quantity').invalid && medicineForm.get('quantity').touched">
+          Quantity is required and must be greater than 0.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="unit">Unit<span class="redContent">*</span></label>
+        <select formControlName="unit" class="form-control">
+          <option value="">Select Unit</option>
+          <option value="tablets">Tablets</option>
+          <option value="liquid">Liquid (100ml)</option>
+        </select>
+        <div class="redContent" *ngIf="medicineForm.get('unit').invalid && medicineForm.get('unit').touched">
+          Unit is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="pricePerUnit">Price per Unit<span class="redContent">*</span></label>
+        <input type="number" formControlName="pricePerUnit" class="form-control">
+        <div class="redContent"
+          *ngIf="medicineForm.get('pricePerUnit').invalid && medicineForm.get('pricePerUnit').touched">
+          Price per Unit is required and must be greater than 0.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="image">Image<span class="redContent">*</span></label>
+        <input type="file" accept="image/*" (change)="onFileSelected($event)" (click)="imageClick()" #fileInput
+          class="form-control-file">
+        <div class="redContent" *ngIf="medicineForm.get('image').invalid && imageClicked">
+          Image is required.
+        </div>
+      </div>
+      <button type="submit" class="btn1 btn-primary btn-block" [disabled]="medicineForm.invalid">Add Medicine</button>
+    </form>
+  </div>
+</div> -->
+
+<!-- Success Modal -->
+<ng-template #successModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Success</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Medicine added successfully!</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.close('view')">View Medicines</button>
+    <button type="button" class="btn btn-primary" (click)="modal.close('Ok click')">OK</button>
+  </div>
+</ng-template>
+
+<!-- Error Modal -->
+<ng-template #errorModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Medicine already exists</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <h6>Medicine with the given Name and Brand already exists.</h6>
+    <p>Please enter different Medicine details.</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="modal.close('Ok click')">OK</button>
+  </div>
+</ng-template>
+
+
+
+
+
+
+
+<section class="text-gray-600 body-font mx-auto flex item-center">
+  <div class="px-5 py-5 mx-auto flex">
+    <div class="bg-gray-100 rounded p-8 flex flex-col mt-10 color-bg">
+      <form class="form-group" [formGroup]="medicineForm" (ngSubmit)="addMedicine(successModal,errorModal)">
+        <h2 class=" text-gray-900 text-lg font-medium title-font mb-5">Create New Medicine</h2>
+
+        <div class="relative mb-4">
+          <label class="leading-7 text-sm text-gray-600">Medicine Name<span style="color: red;">*</span></label>
+          <input type="text" formControlName="medicineName" placeholder="Medicine Name"
+            class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+          <div class="redContent"
+            *ngIf="medicineForm.get('medicineName').invalid && medicineForm.get('medicineName').touched">
+            Medicine Name is required.
+          </div>
+        </div>
+
+        <div class="relative mb-4">
+          <label class="leading-7 text-sm text-gray-600">Brand<span style="color: red;">*</span></label>
+          <input type="text" formControlName="brand" placeholder="Brand"
+            class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+          <div class="redContent" *ngIf="medicineForm.get('brand').invalid && medicineForm.get('brand').touched">
+            Brand is required.
+          </div>
+        </div>
+
+        <div class="relative mb-4">
+          <label class="leading-7 text-sm text-gray-600">Category<span style="color: red;">*</span></label>
+          <input type="text" formControlName="category" placeholder="Category"
+            class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+          <div class="redContent" *ngIf="medicineForm.get('category').invalid && medicineForm.get('category').touched">
+            Category is required.
+          </div>
+        </div>
+
+        <div class="relative mb-4">
+          <label class="leading-7 text-sm text-gray-600">Description<span style="color: red;">*</span></label>
+          <input type="text" formControlName="description" placeholder="Description"
+            class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+          <div class="redContent"
+            *ngIf="medicineForm.get('description').invalid && medicineForm.get('description').touched">
+            Description is required.
+          </div>
+        </div>
+
+        <div class="relative mb-4">
+          <label class="leading-7 text-sm text-gray-600">Quantity<span style="color: red;">*</span></label>
+          <input type="number" formControlName="quantity" placeholder="Quantity"
+            class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+          <div class="redContent" *ngIf="medicineForm.get('quantity').invalid && medicineForm.get('quantity').touched">
+            Quantity is required and must be greater than 0.
+          </div>
+        </div>
+
+        <div class="relative mb-4">
+          <label class="leading-7 text-sm text-gray-600">Unit<span style="color: red;">*</span></label>
+          <select style="background-color: white;"
+            class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+            formControlName="unit">
+            <option selected value="">Select Unit</option>
+            <option value="tablets">Tablets</option>
+            <option value="liquid">Liquid (100ml)</option>
+          </select>
+          <div class="redContent" *ngIf="medicineForm.get('unit').invalid && medicineForm.get('unit').touched">
+            Unit is required.
+          </div>
+        </div>
+
+        <div class="relative mb-4">
+          <label class="leading-7 text-sm text-gray-600">Price per Unit<span style="color: red;">*</span></label>
+          <input type="number" formControlName="pricePerUnit" placeholder="Price Per Unit"
+            class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+            <div class="redContent"
+            *ngIf="medicineForm.get('pricePerUnit').invalid && medicineForm.get('pricePerUnit').touched">
+            Price per Unit is required and must be greater than 0.
+          </div>
+        </div>
+
+        <div class="relative mb-4">
+          <label class="leading-7 text-sm text-gray-600">Image<span style="color: red;">*</span></label>
+          <input type="file" accept="image/*" (change)="onFileSelected($event)" (click)="imageClick()" #fileInput
+            class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+            <div class="redContent" *ngIf="medicineForm.get('image').invalid && imageClicked">
+              Image is required.
+            </div>
+        </div>
+
+        <button [disabled]="medicineForm.invalid"
+          class="button-color w-full text-white  border-0 py-2 px-8 focus:outline-none  rounded text-lg"
+          type="submit">
+          Add Medicine
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- <div class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50" *ngIf="isOpen">
+  <div class="bg-white rounded-lg shadow-lg p-6 w-1/3">
+      <h2 class="text-xl font-semibold mb-4">Registration Failed</h2>
+      <p class="mb-4">{{errorMessage}}</p>
+      <button class="bg-blue-500 text-white px-4 py-2 rounded" (click)="closeModel()">Close</button>
+  </div>
+</div>
+
+<div class="fixed top-4 right-4 bg-blue-500 text-white p-4 rounded shadow-lg" *ngIf="isVisible">
+  <p>This is a notification message!</p>
+  <button (click)="closeNotification()"
+      class="mt-2 bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
+      Close
+  </button>
+</div> -->

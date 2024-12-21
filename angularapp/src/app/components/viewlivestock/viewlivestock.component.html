@@ -1,0 +1,89 @@
+<!-- <div class="conatiner">
+    <h1>Livestock</h1><br>
+    <input placeholder="Search... " (input)="searchFn()" [(ngModel)]="search"
+        class="form-control mb-3 highlight-search">
+    <table>
+        <thead>
+            <tr>
+                <td><label>S.No</label></td>
+                <td>Name</td>
+                <td>Liv Id</td>
+                <td>Species</td>
+                <td>Age</td>
+                <td>Breed</td>
+                <td>Health Condition</td>
+                <td>Location</td>
+                <td>Vaccination Status</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let livestock of livestocks ; let i=index">
+                <td>{{i+1}}</td>
+                <td>{{livestock.name}}</td>
+                <td>{{livestock.livestockId}}</td>
+                <td>{{livestock.species}}</td>
+                <td>{{livestock.age}}</td>
+                <td>{{livestock.breed}}</td>
+                <td>{{livestock.healthCondition}}</td>
+                <td>{{livestock.location}}</td>
+                <td>{{livestock.vaccinationStatus}}</td>
+                <td><button (click)="editLivestock(livestock.livestockId)"
+                        style="margin-right: 10px;">Edit</button><button
+                        (click)="deleteLivestock(livestock.livestockId)">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div> -->
+
+<div class="container mx-auto p-4">
+    <h1 class="text-2xl font-bold mb-4 text-center text-white">LIVESTOCKS</h1>
+    <div class="mb-4">
+        <input type="text" class="w-full p-2 border rounded" placeholder="Search..." [(ngModel)]="search"
+            (input)="searchFn()" style="background-color: #e2fcc5;" />
+    </div>
+    <table class="min-w-full bg-white text-center">
+        <thead>
+            <tr class="bg-gradient-to-r from-green-900 via-green-800 to-gray-800 text-white">
+                <th class="py-1 px-2 border-b">S.No</th>
+                <th class="py-1 px-2 border-b">Name</th>
+                <th class="py-1 px-2 border-b">Species</th>
+                <th class="py-1 px-2 border-b">Age</th>
+                <th class="py-1 px-2 border-b">Breed</th>
+                <th class="py-1 px-2 border-b">Health Condition</th>
+                <th class="py-1 px-2 border-b">Location</th>
+                <th class="py-1 px-2 border-b">Vaccination Status</th>
+                <th class="py-1 px-2 border-b">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let livestock of livestocks ; let i=index" class="hover:bg-gray-100">
+                <td class="py-1 px-2 border-b">{{i+1}}</td>
+                <td class="py-1 px-2 border-b">{{livestock.name}}</td>
+                <td class="py-1 px-2 border-b">{{livestock.species}}</td>
+                <td class="py-1 px-2 border-b">{{livestock.age}}</td>
+                <td class="py-1 px-2 border-b">{{livestock.breed}}</td>
+                <td class="py-1 px-2 border-b">{{livestock.healthCondition}}</td>
+                <td class="py-1 px-2 border-b">{{livestock.location}}</td>
+                <td class="py-1 px-2 border-b">{{livestock.vaccinationStatus}}</td>
+                <td class="py-1 px-2 border-b">
+                    <button class="bg-blue-500 text-white px-2 py-1 rounded mr-2 hover:bg-blue-700"
+                        (click)="editLivestock(livestock.livestockId)" style="margin-right: 10px;">Edit</button>
+                    <button class="bg-red-500 text-white px-2 py-1 rounded mr-2 hover:bg-red-700"
+                        (click)="openDeleteModal(livestock.livestockId)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50" *ngIf="isDeleteVisible">
+    <div class="bg-white rounded-lg shadow-lg p-6 w-1/3">
+        <h2 class="text-xl font-semibold mb-4">Confirm Delete</h2>
+        <p class="mb-4">Are you sure you want to delete this livestock?</p>
+        <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded mr-2 hover:bg-gray-700"
+            (click)="closeDeleteModal()">Cancel</button>
+        <button type="button" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700"
+            (click)="deleteLivestock()">Delete</button>
+    </div>
+</div>

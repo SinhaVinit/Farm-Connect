@@ -1,0 +1,44 @@
+<nav class="navbar p-3 mx-0 flex justify-between items-center">
+    <div class="flex items-center">
+        <img [routerLink]="['/home']" src="assets/FC_logo-removebg-preview.png" alt="Logo" class="h-12 w-35">
+        <div [routerLink]="['/home']" class="text-white text-4xl text-center">Farm Connect</div>
+    </div>
+    <div class="flex space-x-4 justify-between items-center">
+        <a [routerLink]="['/home']" class="text-white text-lg pr-2">Home</a>
+
+        <div class="relative group">
+            <button class="text-white text-lg focus:outline-none pr-2">
+                Live Stock
+            </button>
+            <div
+                class="absolute right-0 mt-0 w-48 bg-white rounded-md shadow-lg py-2 z-20 hidden group-hover:block navbaroption">
+                <a [routerLink]="['livestock/owner/add']" class="block px-4 py-2 text-white">Add Live Stock</a>
+                <a [routerLink]="['livestock/owner/view']" class="block px-4 py-2 text-white">My Live Stock</a>
+            </div>
+        </div>
+
+        <a [routerLink]="['medicine/owner/view']" class="text-white text-lg pr-2">Medicines</a>
+        <a [routerLink]="['/feed/owner/view']" class="text-white text-lg pr-2">Feeds</a>
+        <a [routerLink]="['/request/owner/view']" class="text-white text-lg pr-2">My Requests</a>
+        
+        <div class="relative group">
+            <button class="text-white text-lg focus:outline-none pr-2">
+                Feedback
+            </button>
+            <div
+                class="absolute right-0 mt-0 w-48 bg-white rounded-md shadow-lg py-2 z-20 hidden group-hover:block navbaroption">
+                <a [routerLink]="['/feedbacks/owner/add']" class="block px-4 py-2 text-white">Post Feedback</a>
+                <a [routerLink]="['feedbacks/owner/view']" class="block px-4 py-2 text-white">My Feedback</a>
+            </div>
+        </div>
+
+        <div class="relative group">
+            <img src="assets/hd-profile-user-round-green-icon-symbol-transparent-png-701751695033515odwmcmaxp6.png" alt="Profile" class="h-10 w-10 rounded-full cursor-pointer">
+            <div class="absolute right-0 mt-0 w-48 bg-white rounded-md shadow-lg py-2 z-20 hidden group-hover:block navbaroption">
+                <div class="px-4 py-2 text-white">{{username}} / {{role}}</div>
+                <button class="block w-full text-left px-4 py-2 text-white hover:bg-red-500"
+                    (click)="logout()">Logout</button>
+            </div>
+        </div>
+    </div>
+</nav>

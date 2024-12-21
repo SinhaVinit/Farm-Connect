@@ -1,0 +1,21 @@
+.jumbotron {
+    background: url('src/assets/FARM1.jpg') no-repeat center center;
+    background-size: cover;
+    color: white;
+  }
+  .btn-primary {
+    background-color: #28a745;
+    border-color: #28a745;
+  }
+  .btn-outline-primary {
+    color: #28a745;
+    border-color: #28a745;
+  }
+  .btn-outline-primary:hover {
+    background-color: #28a745;
+    color: white;
+  }
+ .jumbotron img {
+        width: 100%; 
+        height: auto;
+    }

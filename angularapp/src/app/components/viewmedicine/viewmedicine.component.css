@@ -1,0 +1,40 @@
+/* .btn1 {
+  padding: 5px 10px;
+  margin: 4px;
+}
+
+.highlight-search {
+  background-color: #000;
+  border: 2px solid #000;
+  color: #fff;
+  font-weight: bold;
+}
+
+.highlight-search::placeholder {
+  color: #ccc;
+  opacity: 0.7;
+}
+
+img {
+  height: 200px;
+  width: 200px;
+}
+.modal-body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1 {
+  background: linear-gradient(45deg, #1B5E20, #33691E, #424242, #212121);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+thead tr {
+  background: linear-gradient(45deg, #1B5E20, #33691E, #424242, #212121);
+}

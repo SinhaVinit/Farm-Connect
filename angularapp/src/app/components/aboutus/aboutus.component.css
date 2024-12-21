@@ -1,0 +1,11 @@
+.button-color {
+    background: linear-gradient(45deg, #1B5E20, #33691E, #424242);
+  }
+  
+  .color-bg {
+    background: linear-gradient(45deg, #A5D6A7, #C5E1A5, #E0E0E0);
+  }
+  
+  .redContent {
+    color: red;
+  }

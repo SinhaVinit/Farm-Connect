@@ -1,0 +1,190 @@
+<div class="container">
+    <!-- <form [formGroup]="editForm" (ngSubmit)="updateFeed(updateModal,exceptionModal)" class="form-group">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2 class="mb-1">Edit Feed</h2>
+            <button class="btn btn-danger btn-sm" (click)="cancel()">Cancel</button>
+        </div>
+        <label>Feed Name<span class="redContent">*</span>
+        </label>
+        <input type="text" formControlName="feedName" placeholder="Feed Name">
+        <div *ngIf="feedName.invalid && (feedName.dirty || feedName.touched)">
+            <div *ngIf="feedName.errors?.required" class="redContent">Feed Name is required.</div>
+        </div>
+
+        <label>Type<span span class="redContent">*</span></label>
+        <input type="text" formControlName="type" placeholder="Type">
+        <div *ngIf="type.invalid && (type.dirty || type.touched)">
+            <div *ngIf="type.errors?.required" class="redContent">Type is required.</div>
+        </div>
+
+
+        <label>Description<span span class="redContent">*</span></label>
+        <input type="text" formControlName="description" placeholder="Description" />
+        <div *ngIf="description.invalid && (description.dirty || description.touched)">
+            <div *ngIf="description.errors?.required" span class="redContent">Description required.</div>
+        </div>
+
+
+        <label>Quantity<span span class="redContent">*</span></label>
+        <input type="number" formControlName="quantity" placeholder="Quantity">
+        <div *ngIf="quantity.invalid && (quantity.dirty || quantity.touched)">
+            <div *ngIf="quantity.errors?.required" span class="redContent">Quantity is required.</div>
+            <div *ngIf="quantity.errors?.min" span class="redContent">Quantity must be a positive number.</div>
+        </div>
+
+        <label>Unit<span span class="redContent">*</span></label>
+        <select formControlName="unit">
+            <option value="">Select Unit</option>
+            <option value="kg">kg</option>
+            <option value="g">g</option>
+        </select>
+        <div *ngIf="unit.invalid && (unit.dirty || unit.touched)">
+            <div *ngIf="unit.errors?.required" span class="redContent">Unit is required.</div>
+        </div>
+
+
+
+        <label>Price Per Unit<span span class="redContent">*</span></label>
+        <input type="number" formControlName="pricePerUnit" placeholder="Price Per Unit" />
+        <div *ngIf="pricePerUnit.invalid && (pricePerUnit.dirty || pricePerUnit.touched)">
+            <div *ngIf="pricePerUnit.errors?.required" span class="redContent">Price Per Unit is required.</div>
+            <div *ngIf="pricePerUnit.errors?.min" span class="redContent">Price Per Unit must be a positive number.
+            </div>
+        </div>
+
+
+        <label>Image</label>
+        <input type="file" accept="image/*" (change)="onFileSelected($event)" class="form-control-file">
+
+        <button type="submit" [disabled]="editForm.invalid" class="btn btn-success btn-lg btn-block">Submit</button>
+    </form> -->
+
+    <ng-template #updateModal let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title">Feed Updated</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            Feed updated successfully
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="ok(modal)">Okay</button>
+        </div>
+    </ng-template>
+
+    <ng-template #exceptionModal let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title" style="text-align: center;">Feed Already Exists!!</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <h5 style="text-align: center;">Feed with the given name and type aleady exists.</h5>
+            <h6 style="text-align: center;">Please enter different feed details.</h6>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="toView(modal)">View</button>
+            <button type="button" class="btn btn-primary" (click)="ok(modal)">Okay</button>
+        </div>
+    </ng-template>
+</div>
+
+
+
+
+<section class="text-gray-600 body-font mx-auto flex item-center">
+    <div class="px-5 py-5 mx-auto flex">
+        <div class="bg-gray-100 rounded p-8 flex flex-col mt-10 color-bg">
+            <form class="form-group" [formGroup]="editForm"
+                (ngSubmit)="updateFeed(updateModal,exceptionModal)">
+                <h2 class=" text-gray-900 text-lg font-medium title-font mb-5">Edit Feed</h2>
+
+                <div class="relative mb-4">
+                    <label class="leading-7 text-sm text-gray-600">Feed Name<span style="color: red;">*</span></label>
+                    <input type="text" formControlName="feedName" placeholder="Feed Name"
+                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    <div *ngIf="feedName.invalid && (feedName.dirty || feedName.touched)">
+                        <div *ngIf="feedName.errors?.required" class="redContent">Feed Name is required.</div>
+                    </div>
+                </div>
+                
+                <div class="relative mb-4">
+                    <label class="leading-7 text-sm text-gray-600">Type<span style="color: red;">*</span></label>
+                    <input type="text" formControlName="type" placeholder="Type"
+                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    <div *ngIf="type.invalid && (type.dirty || type.touched)">
+                        <div *ngIf="type.errors?.required" class="redContent">Type is required.</div>
+                    </div>
+                </div>
+
+                <div class="relative mb-4">
+                    <label class="leading-7 text-sm text-gray-600">Description<span style="color: red;">*</span></label>
+                    <input type="text" formControlName="description" placeholder="Description"
+                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    <div *ngIf="description.invalid && (description.dirty || description.touched)">
+                        <div *ngIf="description.errors?.required" span class="redContent">Description required.</div>
+                    </div>
+                </div>
+
+                <div class="relative mb-4">
+                    <label class="leading-7 text-sm text-gray-600">Quantity<span style="color: red;">*</span></label>
+                    <input type="number" formControlName="quantity" placeholder="Quantity"
+                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    <div *ngIf="quantity.invalid && (quantity.dirty || quantity.touched)">
+                        <div *ngIf="quantity.errors?.required" span class="redContent">Quantity is required.</div>
+                        <div *ngIf="quantity.errors?.min" span class="redContent">Quantity must be a positive number.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative mb-4">
+                    <label class="leading-7 text-sm text-gray-600">Unit<span style="color: red;">*</span></label>
+                    <select style="background-color: white;"
+                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                        formControlName="unit">
+                        <option selected value="" class="py-1">Select Unit</option>
+                        <option value="kg">kg</option>
+                        <option value="g">g</option>
+                    </select>
+                    <div *ngIf="unit.invalid && (unit.dirty || unit.touched)">
+                        <div *ngIf="unit.errors?.required" span class="redContent">Unit is required.</div>
+                    </div>
+                </div>
+
+                <div class="relative mb-4">
+                    <label class="leading-7 text-sm text-gray-600">Price Per Unit<span
+                            style="color: red;">*</span></label>
+                    <input type="number" formControlName="pricePerUnit" placeholder="Price Per Unit"
+                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    <div *ngIf="pricePerUnit.invalid && (pricePerUnit.dirty || pricePerUnit.touched)">
+                        <div *ngIf="pricePerUnit.errors?.required" span class="redContent">Price Per Unit is required
+                        </div>
+                        <div *ngIf="pricePerUnit.errors?.min" span class="redContent">Price Per Unit must be a positive
+                            number</div>
+                    </div>
+                </div>
+
+                <div class="relative mb-4">
+                    <label class="leading-7 text-sm text-gray-600">Image</label>
+                    <input type="file" accept="image/*" (change)="onFileSelected($event)"
+                        #fileInput
+                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                </div>
+
+                <button [disabled]="editForm.invalid"
+                    class="button-color w-full text-white border-0 py-2 px-8 focus:outline-none  rounded text-lg"
+                    type="submit">
+                    Finish Edit
+                </button>
+                <button
+                    class=" mt-2 w-full text-white bg-red-500 hover:bg-red-700 border-0 py-2 px-8 focus:outline-none rounded text-lg"
+                    (click)="cancel()">
+                    Cancel
+                </button>
+            </form>
+        </div>
+    </div>
+</section>

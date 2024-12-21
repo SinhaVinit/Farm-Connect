@@ -1,0 +1,20 @@
+<div class="container mt-4"  >
+    <div class="row">
+      <div class="col-md-4" *ngFor="let product of paginatedProducts">
+        <div class="card mb-4">
+          <div class="card-body" style="background-color: rgba(190, 184, 184, 0.399);border-radius: 20px;" >
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">{{ product.description }}</p>  
+            <img [src]="product.image" class="card-img-top mx-auto d-block" alt="{{ product.name }}" style="width: 100px; height: 100px;">
+            <p class="card-text"><strong>Price: &#8377;{{ product.price }}</strong></p>
+            <button class="btn btn-success btn-sm" style="padding-top: 0.3%;padding-bottom: 0.3%;" (click)="signUp()">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center mt-4">
+        <button class="btn btn-success btn-sm" (click)="previousPage()" [disabled]="currentPage === 0">Prev</button> &nbsp;
+        <button class="btn btn-success btn-sm" (click)="nextPage()" [disabled]="(currentPage + 1) * itemsPerPage >= products.length">Next</button>
+    </div>
+  </div>
+  

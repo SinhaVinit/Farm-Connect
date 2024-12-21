@@ -1,0 +1,94 @@
+/* body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+    margin: 0;
+  }
+ 
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+ 
+  form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+  }
+ 
+  form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+ 
+  form input,
+  form select,
+  form textarea {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+ 
+  form button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+ 
+  form button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+ 
+  .redContent {
+    color: red;
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .success{
+    width: 300px;
+    height: 234px;
+    text-align: center;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    margin: 3px auto;
+}
+span{
+  color: red;
+}
+/* p{
+  color: red;
+} */
+
+.button-color {
+  background: linear-gradient(45deg, #1B5E20, #33691E, #424242);
+}
+
+.color-bg {
+  background: linear-gradient(45deg, #A5D6A7, #C5E1A5, #E0E0E0);
+  width: 500px;
+}
+
+.redContent {
+  color: red;
+}

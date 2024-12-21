@@ -1,0 +1,79 @@
+/* .container {
+  width: 100%;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 18px;
+  text-align: left;
+}
+
+thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+}
+
+thead td {
+  padding: 12px 15px;
+}
+
+tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+tbody td {
+  padding: 12px 15px;
+}
+
+button {
+  background-color: #ff4b5c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #ff1c3c;
+} */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1 {
+  background: linear-gradient(45deg, #1B5E20, #33691E, #424242, #212121);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+thead tr {
+  background: linear-gradient(45deg, #1B5E20, #33691E, #424242, #212121);
+}
+
+.button-color {
+  background: linear-gradient(45deg, #1B5E20, #33691E, #424242);
+}
+
+.color-bg {
+  background: linear-gradient(45deg, #A5D6A7, #C5E1A5, #E0E0E0);
+}
+
+.redContent {
+  color: red;
+}

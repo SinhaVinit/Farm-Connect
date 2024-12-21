@@ -1,0 +1,113 @@
+<!-- <h1 style="text-align: center">Feedback</h1>
+<table class="table table-bordered table-striped table-sm text-center">
+  <thead class="thead-dark">
+    <tr>
+      <th>S.No</th>
+      <th>Feedbacks</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let feedback of feedbacks; let i=index">
+      <td>{{i+1}}</td>
+      <td>{{feedback.feedbackText}}</td>
+      <td><button class="btn btn-primary btn-sm" (click)="openUpdateModal(editModal,feedback)">Edit</button>&nbsp;
+        <button class="btn  btn-danger btn-sm"
+          (click)="openDeleteModal(deleteModal,feedback.feedbackId)">Delete</button>
+      </td>
+
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #deleteModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Confirm Delete</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    Are you sure you want to delete this feedback?
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
+    <button type="button" class="btn btn-danger" (click)="confirmDelete(modal)">Delete</button>
+  </div>
+</ng-template> -->
+
+<!-- <ng-template #editModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Edit Feedback</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <textarea rows="4" cols="50" name="feedbackText" [(ngModel)]="feedback.feedbackText"></textarea><br>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
+    <button type="button" class="btn btn-danger" (click)="confirmUpdate(modal)">Save</button>
+  </div>
+</ng-template> -->
+
+
+
+
+
+
+
+<div class="container mx-auto p-4">
+  <h1 class="text-2xl font-bold mb-4 text-center text-white">FEEDBACK DETAILS</h1>
+  <table class="min-w-full bg-white text-center">
+    <thead>
+      <tr class="bg-gradient-to-r from-green-900 via-green-800 to-gray-800 text-white">
+        <th class="py-1 px-2 border-b">S.No</th>
+        <th class="py-1 px-2 border-b">Feedbacks</th>
+        <th class="py-1 px-2 border-b">Posted Date</th>
+        <th class="py-1 px-2 border-b">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let feedback of feedbacks,let i=index" class="hover:bg-gray-100">
+        <td class="py-1 px-2 border-b">{{i+1}}</td>
+        <td class="py-1 px-2 border-b">{{feedback.feedbackText}}</td>
+        <td class="py-1 px-2 border-b">{{feedback.date}}</td>
+        <td class="py-1 px-2 border-b">
+          <button class="bg-indigo-500 text-white px-2 py-1 rounded mr-2 hover:bg-indigo-700" (click)="openUpdateModal(feedback)">Edit</button>
+          <button class="bg-red-500 text-white px-2 py-1 rounded mr-2 hover:bg-red-700"
+            (click)="openDeleteModal(feedback.feedbackId)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50" *ngIf="isDeleteVisible">
+  <div class="bg-white rounded-lg shadow-lg p-6 w-1/3">
+    <h2 class="text-xl font-semibold mb-4">Confirm Delete</h2>
+    <p class="mb-4">Are you sure you want to delete this feedback?</p>
+    <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded mr-2 hover:bg-gray-700"
+      (click)="closeDeleteModal()">Cancel</button>
+    <button type="button" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700"
+      (click)="confirmDelete()">Delete</button>
+  </div>
+</div>
+
+<div class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50" *ngIf="isEditVisible">
+  <div class="bg-white rounded-lg shadow-lg p-6">
+    <h2 class="text-xl font-semibold mb-4">Edit Feedback</h2>
+    <div class="p-4 flex items-center justify-center">
+      <form>
+        <textarea rows="4" cols="50" name="feedbackText" [(ngModel)]="feedback.feedbackText"></textarea><br>
+      </form>
+    </div>
+      <button type="button" class="bg-green-500 text-white px-4 py-2 rounded mr-2 hover:bg-green-700" (click)="confirmUpdate()">Save</button>
+    <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded mr-2 hover:bg-gray-700"
+      (click)="closeEditModal()">Cancel</button>
+  </div>
+</div>

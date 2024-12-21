@@ -1,0 +1,11 @@
+.footer-color {
+    background: linear-gradient(45deg, #1B5E20, #33691E, #424242, #212121);
+}
+.footer-color-extend {
+    background: linear-gradient(45deg, #1B5E20, #33691E, #424242, #212121);
+    backdrop-filter: blur(10px);
+}
+/* iframe {
+    width: 400px;
+    height: 200px;
+} */

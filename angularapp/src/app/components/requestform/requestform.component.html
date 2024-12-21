@@ -1,0 +1,130 @@
+<!-- <div class="container">
+    <form [formGroup]="requestForm" (ngSubmit)="addNewRequest()">
+        <div>
+            <label>Request Type</label>
+            <input type="text" [(ngModel)]="requestType" name="requestType" required formControlName="requestType"
+                disabled>
+            <div *ngIf="!requestType">
+                <small>Request Type is required.</small>
+            </div>
+        </div>
+
+        <div *ngIf="requestType === 'Feed'">
+            <label>Feed Name</label>
+            <input type="text" [(ngModel)]="feedName" name="feedName" formControlName="feedName" disabled />
+        </div>
+
+        <div *ngIf="requestType === 'Medicine'">
+            <label>Medicine Name</label>
+            <input type="text" [(ngModel)]="medicineName" name="medicineName" formControlName="medicineName" disabled />
+        </div>
+        <div>
+            <label>Livestock</label>
+            <select [(ngModel)]="selectedLivestockName" name="livestock" required formControlName="livestock"
+                (change)="SaveLivestockID($event.target.value)">
+                <option value="" selected>Select livestock</option>
+                <option *ngFor="let livestock of liveStocks" [value]="livestock.livestockId">{{ livestock.name }}
+                </option>
+            </select>
+            <div *ngIf="!selectedLivestockName">
+                <small>Livestock selection is required.</small>
+            </div>
+        </div>
+        <div>
+            <label>Quantity</label>
+            <input type="number" [(ngModel)]="quantity" name="quantity" required min="1" formControlName="quantity" />
+            <div *ngIf="quantity < 1">
+                <small>Quantity is required and must be at least 1.</small>
+            </div>
+        </div>
+        <div>
+            <button type="submit">Submit</button>
+            <button type="button" (click)="cancelRequest()">Cancel</button>
+        </div>
+    </form>
+</div> -->
+
+
+<section class="text-gray-600 body-font mx-auto flex item-center">
+    <div class="px-5 py-5 mx-auto flex">
+        <div class="bg-gray-100 rounded p-8 flex flex-col mt-10 color-bg">
+            <form class="form-group" [formGroup]="requestForm" (ngSubmit)="addNewRequest()">
+                <h2 class=" text-gray-900 text-lg font-medium title-font mb-5">Request Form</h2>
+
+                <div class="relative mb-4">
+                    <label class="leading-7 text-sm text-gray-600">Request Type<span
+                            style="color: red;">*</span></label>
+                    <input type="text" [(ngModel)]="requestType" name="requestType" required
+                        formControlName="requestType" disabled
+                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                </div>
+
+                <div class="relative mb-4" *ngIf="requestType === 'Feed'">
+                    <label class="leading-7 text-sm text-gray-600">Feed Name<span style="color: red;">*</span></label>
+                    <input type="text" [(ngModel)]="feedName" name="feedName" formControlName="feedName" disabled
+                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                </div>
+
+                <div class="relative mb-4" *ngIf="requestType === 'Medicine'">
+                    <label class="leading-7 text-sm text-gray-600">Medicine Name<span
+                            style="color: red;">*</span></label>
+                    <input type="text" [(ngModel)]="medicineName" name="medicineName" formControlName="medicineName"
+                        disabled
+                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                </div>
+
+                <!-- <div class="relative mb-4">
+                    <label class="leading-7 text-sm text-gray-600">Livestock<span style="color: red;">*</span></label>
+                    <select style="background-color: white;"
+                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                        [(ngModel)]="selectedLivestockName" name="livestock" required formControlName="livestock"
+                        (change)="SaveLivestockID($event.target.value)">
+                        <option selected value="">Select livestock</option>
+                        <option *ngFor="let livestock of liveStocks" [value]="livestock.livestockId">{{ livestock.name}}</option>
+                    </select>
+                    <div class="redContent" *ngIf="requestForm.get('livestock').invalid && requestForm.get('livestock').touched">
+                        Livestock is required.
+                    </div>
+                </div> -->
+                <div class="relative mb-4">
+                    <label class="leading-7 text-sm text-gray-600">Livestock</label>
+                    <select #ref [(ngModel)]="selectedLivestockName" name="livestock" required formControlName="livestock"
+                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                        (change)="SaveLivestockID($event.target.value)">
+                        <!-- <option selected [value]="">Select livestock</option> -->
+                        <option *ngFor="let livestock of liveStocks" [value]="livestock.livestockId">{{ livestock.name
+                            }}</option>
+                    </select>
+                    <div *ngIf="ref.invalid && ref.touched">
+                        <small>Livestock selection is required.</small>
+                    </div>
+                </div>
+
+
+
+
+                <div class="relative mb-4">
+                    <label class="leading-7 text-sm text-gray-600">Quantity<span style="color: red;">*</span></label>
+                    <input type="number" [(ngModel)]="quantity" name="quantity" required min="1"
+                        formControlName="quantity"
+                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    <div class="redContent"
+                        *ngIf="requestForm.get('quantity').invalid && requestForm.get('quantity').touched">
+                        Quantity is required and must be at least 1.
+                    </div>
+                </div>
+
+                <button [disabled]="requestForm.invalid"
+                    class="button-color w-full text-white border-0 py-2 px-8 focus:outline-none rounded text-lg"
+                    type="submit">
+                    Submit
+                </button>
+                <button
+                    class="mt-2 w-full text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-700 rounded text-lg"
+                    type="submit" (click)="cancelRequest()">
+                    Cancel
+                </button>
+            </form>
+        </div>
+    </div>
+</section>

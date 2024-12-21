@@ -1,0 +1,13 @@
+<nav class="navbar p-3 mx-0 flex justify-between items-center" *ngIf="!role">
+    <div class="flex items-center">
+        <img [routerLink]="['/home']" src="assets/FC_logo-removebg-preview.png" alt="Logo" class="h-12 w-35">
+        <div [routerLink]="['/home']" class="text-white text-4xl text-center">Farm Connect</div>
+    </div>
+    <div class="flex space-x-4 justify-between items-center">
+        <a [routerLink]="['/registration']" class="text-white text-lg pr-2">Register</a>
+        <a [routerLink]="['/login']" class="text-white text-lg pr-2">Login</a>
+    </div>
+</nav>
+
+<app-adminnav *ngIf="role === 'SUPPLIER'" [role]="role" (loggedOut)="logout($event)"></app-adminnav>
+<app-usernav *ngIf="role === 'OWNER'" [role]="role" (loggedOut)="logout($event)"></app-usernav>

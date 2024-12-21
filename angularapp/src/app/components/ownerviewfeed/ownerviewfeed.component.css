@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1 {
+  background: linear-gradient(45deg, #1B5E20, #33691E, #424242, #212121);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+thead tr {
+  background: linear-gradient(45deg, #1B5E20, #33691E, #424242, #212121);
+}

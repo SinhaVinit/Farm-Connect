@@ -1,0 +1,108 @@
+<section class="text-gray-600 body-font">
+    <div class="container px-5 py-5 mx-auto flex flex-wrap">
+        <div class="lg:w-2/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0 pt-5">
+            <div class="items-center flex justify-center">
+                <img src="assets/encryption.gif" alt="">
+            </div>
+            <h1 class="title-font font-medium text-3xl text-gray-900 text-center">Join Farm Connect!</h1>
+            <p class="leading-relaxed mt-4 text-center">Welcome to Farm Connect! We’re excited to have you join our
+                community. Please fill out the form below to create your account and start managing your farm activities
+                with ease.</p>
+        </div>
+        <div class="lg:w-3/6 md:w-1/2 bg-gray-100 form-bg rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
+            <form class="form-group" [formGroup]="registerForm" (ngSubmit)="register()">
+                <h2 class=" text-gray-900 text-lg font-medium title-font mb-5">Register New User</h2>
+                <div class="relative mb-4">
+                    <label class="leading-7 text-sm text-gray-600">Username</label>
+                    <input type="text" formControlName="username" placeholder="Enter the username"
+                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    <span style="color: red;" *ngIf="username.touched && username.invalid">
+                        Username is required
+                    </span>
+                </div>
+                <div class="relative mb-4">
+                    <label class="leading-7 text-sm text-gray-600">Email</label>
+                    <input type="email" formControlName="email" placeholder="Enter the email"
+                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    <div *ngIf="email.touched && email.invalid">
+                        <span style="color: red;" *ngIf="email.errors.required">Email is required</span>
+                        <span style="color: red;" *ngIf="email.errors.email">Email is not valid</span>
+                    </div>
+                </div>
+                <div class="relative mb-4">
+                    <label class="leading-7 text-sm text-gray-600">Password</label>
+                    <input type="password" formControlName="password" placeholder="Enter the password"
+                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    <div *ngIf="password.touched && password.invalid">
+                        <span style="color: red;" *ngIf="password.errors.required">Password is required</span>
+                        <span style="color: red;" *ngIf="password.touched && password.errors.pattern">Password should
+                            contain atleast 1 uppercase, lowercase, special character, digit, and length of 8 and
+                            above</span>
+                    </div>
+
+                </div>
+                <div class="relative mb-4">
+                    <label class="leading-7 text-sm text-gray-600">Confirm Password</label>
+                    <input type="password" (input)="passwordEqualCheck()" formControlName="confirmPassword"
+                        placeholder="Enter password again"
+                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    <div style="color: red;" *ngIf="confirmPassword.touched && confirmPassword.invalid">
+                        <span *ngIf="confirmPassword.errors.required">Password is required</span>
+                    </div>
+                    <span style="color: red;"
+                        *ngIf="confirmPassword.touched && confirmPassword.valid && isMismatch">Should be the same as
+                        password</span>
+                </div>
+                <div class="relative mb-4">
+                    <label class="leading-7 text-sm text-gray-600">Mobile Number</label>
+                    <input type="number" formControlName="mobileNumber" placeholder="Enter the Mobile Number"
+                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    <div style="color: red;" *ngIf="mobileNumber.touched && mobileNumber.invalid">
+                        <span style="color: red;" *ngIf="mobileNumber.errors.required">Mobile Number is required</span>
+                        <span style="color: red;" *ngIf="mobileNumber.errors.pattern">Mobile Number should have 10
+                            digits </span>
+                    </div>
+                </div>
+
+                <div class="relative mb-4">
+                    <label class="leading-7 text-sm text-gray-600">Role</label>
+                    <select style="background-color: white;"
+                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                        formControlName="userRole">
+                        <option selected value=''>Select Role</option>
+                        <option value="SUPPLIER">SUPPLIER</option>
+                        <option value="OWNER">OWNER</option>
+                    </select>
+                    <span style="color: red;" *ngIf="userRole.touched && userRole.value===''">Should select role</span>
+                </div>
+                <div>
+                    <span style="color: red;" *ngIf="formCheck">All fields are required</span>
+                </div>
+                <button
+                    class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+                    type="submit" (click)="checkForm()">Sign Up</button>
+                <div>
+                    <p class="text-center mt-4">Already an user?<a id="clickToLogin" [routerLink]="['/login']"> Click
+                            here to login!</a></p>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</section>
+
+<div class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50" *ngIf="isOpen">
+    <div class="bg-white rounded-lg shadow-lg p-6 w-1/3">
+        <h2 class="text-xl font-semibold mb-4">Registration Failed</h2>
+        <p class="mb-4">{{errorMessage}}</p>
+        <button class="bg-blue-500 text-white px-4 py-2 rounded" (click)="closeModel()">Close</button>
+    </div>
+</div>
+
+<div class="fixed top-4 right-4 bg-blue-500 text-white p-4 rounded shadow-lg" *ngIf="isVisible">
+    <p>This is a notification message!</p>
+    <button (click)="closeNotification()"
+        class="mt-2 bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
+        Close
+    </button>
+</div>
